@@ -1,0 +1,31 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="MindPunk: Prototype"
+run/main_scene="uid://cwoykg2b6xq27"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://Actors/Player/": "teal",
+"res://Levels/": "purple",
+"res://Mini_games/": "pink",
+"res://Systems/": "red"
+}
+
+[layer_names]
+
+2d_render/layer_1="Player"
+2d_physics/layer_1="Wall"
+2d_physics/layer_2="Player"
