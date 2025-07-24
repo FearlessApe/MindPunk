@@ -18,4 +18,3 @@ func _physics_process(delta: float) -> void:
 	velocity = current_velocity
 	move_and_slide()
 	
-	
