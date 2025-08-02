@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-@export var max_speed: float = 100.0
+@export var max_speed: float = 200.0
 # Giveing the player smoother for aceleration.
-const acceleration_smoothing = 15.0
+const acceleration_smoothing = 20.0
 
 func _process(_delta):
 	# movement vector
