@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed: float = 200.0
-@export var acceleration: float = 150.0
+@export var acceleration: float = 15.0
 
 var current_velocity: Vector2 = Vector2.ZERO
 
