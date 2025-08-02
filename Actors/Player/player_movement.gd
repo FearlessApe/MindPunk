@@ -1,22 +1,25 @@
 extends CharacterBody2D
 
-#region
-@export var speed: float = 200.0
-@export var acceleration: float = 15.0
-var current_velocity: Vector2 = Vector2.ZERO
+@export var max_speed: float = 100.0
+# Giveing the player smoother for aceleration.
+const acceleration_smoothing = 15.0
 
-func _physics_process(delta: float) -> void:
-	var input_dir: Vector2 = Input.get_vector("ui_left","ui_right","ui_up", "ui_down");
+func _process(_delta):
+	# movement vector
+	var movement_vector = get_movement_vector()
 	
-	var target_velocity: Vector2 = input_dir * speed
+	# input direrction
+	var direction = movement_vector.normalized()
 	
-	# Smoothing the speed. By using current Velocity/
-	current_velocity = current_velocity.lerp(target_velocity, acceleration * delta)
-	
+	var target_velocity = direction * max_speed
 	
 	# Use velocity as current
-	velocity = current_velocity
+	velocity = velocity.lerp(target_velocity, 1 - exp(-_delta * acceleration_smoothing))
 	
 	# call move and slide
 	move_and_slide()
-	
+
+func get_movement_vector():
+	var x_movement = Input.get_action_strength("Move_Right") - Input.get_action_strength("Move_Left")
+	var y_movement = Input.get_action_strength("Move_Down") - Input.get_action_strength("Move_Up")
+	return Vector2(x_movement,y_movement)
