@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
+#region
 @export var speed: float = 200.0
 @export var acceleration: float = 15.0
-
 var current_velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
@@ -10,7 +10,7 @@ func _physics_process(delta: float) -> void:
 	
 	var target_velocity: Vector2 = input_dir * speed
 	
-	#Smoothing the speed. By using current Velocity/
+	# Smoothing the speed. By using current Velocity/
 	current_velocity = current_velocity.lerp(target_velocity, acceleration * delta)
 	
 	
@@ -19,3 +19,4 @@ func _physics_process(delta: float) -> void:
 	
 	# call move and slide
 	move_and_slide()
+	
